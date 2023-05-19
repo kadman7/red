@@ -1,0 +1,25 @@
+.header {
+    font-family: 'Times New Roman', Times, serif;
+    width: 500px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0.5px 1px 0.9px 2px rgb(216, 216, 216);
+    padding: 1px 10px 20px 10px;
+    line-height: 18px;
+
+    h3 {
+      color: rgb(10, 10, 10);
+    }
+    
+    &__currencies {
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+      
+      &__label {
+        font-size: 18px;
+        font-weight: bold;
+        color: rgb(25, 25, 25);
+      }
+    }
+}

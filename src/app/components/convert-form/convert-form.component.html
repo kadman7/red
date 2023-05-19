@@ -1,0 +1,19 @@
+<div [formGroup]="convertForm">
+  <div>
+    <input type="number" formControlName="value1">
+    <select formControlName="currency1">
+      <ng-container *ngFor="let currency of currencies">
+        <option *ngIf="currency.cc !== currency2.value" [value]="currency.cc">{{ currency.cc }}</option>
+      </ng-container>
+    </select>
+  </div>
+
+  <div>
+    <input type="number" formControlName="value2">
+    <select formControlName="currency2">
+      <ng-container *ngFor="let currency of currencies">
+        <option *ngIf="currency.cc !== currency1.value" [value]="currency.cc">{{ currency.cc }}</option>
+      </ng-container>
+    </select>
+  </div>
+</div>

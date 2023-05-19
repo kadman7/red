@@ -1,0 +1,10 @@
+<div class="header">
+  <h3>Актуальний курс валют станом на {{ dateNow | date : "dd.MM.yyyy" }}</h3>
+  <div class="header__currencies">
+    <span class="header__currencies__label"
+      *ngFor="let currency of currencies"
+    >
+      {{ currency.cc }} / UAH {{ currency.rate | number : "1.1-2" }}
+    </span>
+  </div>
+</div>
