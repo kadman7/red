@@ -1,8 +1,8 @@
 <app-header
-  [currencies]="[{ cc: 'USD', rate: 30 }, { cc: 'EUR', rate: 40 }]"
+  [currencies]="headerCurrencies$ | async"
 ></app-header>
 <app-convert-form
-  [currencies]="[{ cc: 'USD', rate: 30 }, { cc: 'EUR', rate: 40 }, { cc: 'UAH', rate: 1 }]"
-  defaultCurrency1="USD"
-  defaultCurrency2="UAH"
+  [currencies]="convertFormCurrencies$ | async"
+  [defaultCurrency1]="defaultCurrency1"
+  [defaultCurrency2]="defaultCurrency2"
 ></app-convert-form>

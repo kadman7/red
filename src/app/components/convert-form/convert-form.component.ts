@@ -9,9 +9,17 @@ import { Currency } from 'src/app/models/currency.model';
   styleUrls: ['./convert-form.component.scss']
 })
 export class ConvertFormComponent implements OnInit, OnDestroy {
-  @Input() currencies: Currency[] | null;
+  @Input() set currencies(value: Currency[] | null) {
+    if (value) {
+      this.currenciesList = value;
+      this.currenciesMap = new Map<string, Currency>(value?.map(curr => [curr.cc, curr]));
+      this.value1.updateValueAndValidity();
+    }
+  };
 
   currenciesMap: Map<string, Currency>;
+
+  currenciesList: Currency[];
 
   @Input() defaultValue1: number = 100;
 
@@ -39,12 +47,6 @@ export class ConvertFormComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   ngOnInit(): void {
-
-    this.convertForm.get('value1')
-    this.convertForm.controls.value1
-    this.convertForm.value
-
-    this.currenciesMap = new Map<string, Currency>(this.currencies?.map(curr => [curr.cc, curr]));
     this.value1.patchValue(this.defaultValue1);
     this.value2.patchValue(this.defaultValue2);
     this.currency1.patchValue(this.defaultCurrency1);
@@ -86,8 +88,6 @@ export class ConvertFormComponent implements OnInit, OnDestroy {
             this.currenciesMap.get(value || '')?.rate || 0,
           ), { emitEvent: false }))
     );
-
-    this.value1.updateValueAndValidity();
   }
 
   ngOnDestroy(): void {
